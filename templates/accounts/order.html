@@ -1,0 +1,61 @@
+{% extends 'base/base.html'%}
+
+{% block body %}
+
+<div class=" order">
+    <div class="grid order-g" >
+      <div class="g-col-12 text-center order-heading">
+        <h1>Place your order</h1>
+      </div>
+      <hr id="line">
+      <div>
+        <div class="g-col-12 ">
+          <h2>Address</h2>
+        </div>
+        {% if address_user %}
+        <div class="g-col-12">
+          <p> {{address_user.address_name}} , {{address_user.city}} , {{address_user.state}} , {{address_user.country}} , {{address_user.zipcode}}</p>
+        </div>
+        <div class="g-col-12 address-btn">
+          <a href="{% url 'address'%}" class=" ">Update address</a>
+        </div>
+        {% else %}
+        <div class="g-col-12 address-btn">
+          <a href="{% url 'address'%}" class=" ">Add address</a>
+        </div>
+        {% endif %}
+      </div>
+      <hr id="line">
+      <div class="product">
+        <div class="g-col-12 product-detail">
+          <h2>Product details</h2>
+        </div>
+        <div class="g-col-12 ">
+          <h4>{{product_item.product_name}}</h4>
+        </div>
+
+        <div class="grid product-price">
+          
+            <h4>Price</h4>
+            <h6>${{product_item.price}}</h6>
+          
+        </div>
+        <div class="grid">
+          <div class="g-col-6">
+            <h4>Quantity</h4>
+          </div>
+          <div class="g-col-6">
+            <h6>1</h6>
+          </div>
+        </div>
+        
+      </div>
+      <div class="grid">
+        <div class="g-col-12 address-btn">
+          <a href="{% url 'confirmorder'%}" class="">Place order</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock body %}

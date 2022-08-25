@@ -1,0 +1,16 @@
+
+
+
+
+  {% if messages %}
+
+    {% for message in messages %}
+    <div {% if message.tags %} class="alert alert-{{ message.tags }} d-flex align-items-center" {% endif %} role="alert">
+        
+        <div>
+            {{ message }}
+        </div>
+      </div>
+    {% endfor %}
+
+{% endif %}

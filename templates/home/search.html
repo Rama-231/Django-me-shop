@@ -1,0 +1,37 @@
+{% extends 'base/base.html' %}
+
+{% block body %}
+
+
+<div class="container m-4">
+    <h1>Search Result : {{query}}</h1>
+</div>
+
+{% if search_error %}
+<div class="container m-4">
+    <h1>{{search_error}}</h1>
+</div>
+
+{% else %}
+    <div class="container mt-5 pt-5">
+        <div class="row">
+            {% for product in search_result %}
+            <div class="col-md-3">
+                <figure class="card card-product-grid">
+                    <div class="img-wrap"> <img src="/media/{{product.product_images.first.image}}"> </div>
+                    <figcaption class="info-wrap border-top">
+                        <a href="/product/{{product.slug}}" class="title">{{product.product_name}}</a>
+                        <div class="price mt-2">${{product.price}}</div> <!-- price-wrap.// -->
+                    </figcaption>
+                </figure> <!-- card // -->
+            </div> <!-- col.// -->
+            {% endfor %}
+
+        </div>
+
+    </div>
+{% endif %}
+
+
+
+{% endblock body %}
